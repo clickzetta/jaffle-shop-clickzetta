@@ -26,13 +26,6 @@ seeds:
     +schema: raw
     jaffle-data:
       +enabled: true
-      raw_orders:
-        +column_types:
-          ordered_at: timestamp
-      raw_stores:
-        +column_types:
-          opened_at: timestamp
-          tax_rate: double
 
 models:
   jaffle_shop:
