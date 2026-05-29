@@ -1,0 +1,12 @@
+jaffle_shop:
+  target: dev
+  outputs:
+    dev:
+      type: clickzetta
+      service: <your-service-endpoint>   # e.g. cn-shanghai-alicloud.api.clickzetta.com
+      instance: <your-instance-id>
+      workspace: <your-workspace>
+      username: <your-username>
+      password: <your-password>
+      schema: dbt_jaffle
+      vcluster: default_ap

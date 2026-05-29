@@ -4,10 +4,7 @@ name: "jaffle_shop"
 version: "3.0.0"
 require-dbt-version: ">=1.5.0"
 
-dbt-cloud:
-  project-id: 275557 # Put your project id here
-
-profile: default # Put your profile here
+profile: jaffle_shop
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -28,7 +25,14 @@ seeds:
   jaffle_shop:
     +schema: raw
     jaffle-data:
-      +enabled: "{{ var('load_source_data', false) }}"
+      +enabled: true
+      raw_orders:
+        +column_types:
+          ordered_at: timestamp
+      raw_stores:
+        +column_types:
+          opened_at: timestamp
+          tax_rate: double
 
 models:
   jaffle_shop:
@@ -36,3 +40,7 @@ models:
       +materialized: view
     marts:
       +materialized: table
+
+unit_tests:
+  jaffle_shop:
+    +enabled: false
