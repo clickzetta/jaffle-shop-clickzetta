@@ -70,6 +70,5 @@ models:
 
 unit_tests:
   jaffle_shop:
-    # Disabled: dbt-clickzetta 1.7.0 bug — unit test cleanup uses DROP TABLE on VIEW relations
-    # Tracked: https://github.com/clickzetta/dbt-clickzetta/issues/5
-    +enabled: false
+    # Fixed in dbt-clickzetta 1.7.2
+    +enabled: true
