@@ -85,7 +85,15 @@ dbt test  → Done. PASS=27 WARN=0 ERROR=0 SKIP=0 TOTAL=27
 
 **4. Explore the results**
 
-Query the mart tables directly in ClickZetta Studio or via cz-cli:
+Query the mart tables directly in ClickZetta Studio or via cz-cli. Three ready-to-run example queries are in `analyses/`:
+
+| File | Query |
+|------|-------|
+| `analyses/store_revenue.sql` | Revenue and order count by store location |
+| `analyses/customer_segments.sql` | Customer count and avg spend by segment |
+| `analyses/top_products.sql` | Top 10 products by order frequency |
+
+Quick samples:
 
 ```sql
 -- Store revenue ranking
@@ -121,8 +129,6 @@ GROUP BY product_name, product_type
 ORDER BY times_ordered DESC
 LIMIT 10;
 ```
-
-More example queries in `analyses/`.
 
 **5. View data lineage (optional)**
 
