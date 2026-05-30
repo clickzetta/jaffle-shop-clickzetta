@@ -36,4 +36,4 @@ models:
 
 unit_tests:
   jaffle_shop:
-    +enabled: false
+    +enabled: true
