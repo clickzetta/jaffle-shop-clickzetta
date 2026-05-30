@@ -9,7 +9,7 @@ A coffee shop order dataset with a full dbt project:
 - 6 CSV seed files → raw tables (153,864 rows total)
 - 6 staging views (data cleaning layer)
 - 7 mart tables (business-ready layer)
-- 27 data quality tests
+- 27 data quality tests + 3 unit tests
 - 3 example analyses (store revenue, customer segments, top products)
 
 ## Prerequisites
@@ -72,7 +72,7 @@ dbt debug
 dbt deps
 dbt seed    # ~60s — loads 153,864 rows via COPY INTO
 dbt run     # ~5s  — builds 13 models
-dbt test    # ~10s — runs 27 data quality tests
+dbt test    # ~10s — runs 27 data quality tests + 3 unit tests
 ```
 
 Expected output:
@@ -80,7 +80,7 @@ Expected output:
 ```
 dbt seed  → Done. PASS=6  WARN=0 ERROR=0 SKIP=0 TOTAL=6
 dbt run   → Done. PASS=13 WARN=0 ERROR=0 SKIP=0 TOTAL=13
-dbt test  → Done. PASS=27 WARN=0 ERROR=0 SKIP=0 TOTAL=27
+dbt test  → Done. PASS=30 WARN=0 ERROR=0 SKIP=0 TOTAL=30
 ```
 
 **4. Explore the results**
@@ -145,7 +145,6 @@ Open http://localhost:8080 to explore the data lineage graph.
 |------|--------|
 | `profiles.yml.example` | ClickZetta connection template |
 | `dbt_project.yml` | `column_types: string` for all seed columns — required for COPY INTO compatibility (dbt-clickzetta 1.7.0+) |
-| `dbt_project.yml` | Unit tests disabled — known bug in dbt-clickzetta 1.7.0 ([issue #5](https://github.com/clickzetta/dbt-clickzetta/issues/5)) |
 | `macros/generate_schema_name.sql` | Preserves custom schema names in non-default targets |
 
 ## Project structure
