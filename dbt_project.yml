@@ -26,6 +26,40 @@ seeds:
     +schema: raw
     jaffle-data:
       +enabled: true
+      raw_orders:
+        +column_types:
+          id: string
+          customer: string
+          ordered_at: string
+          store_id: string
+          subtotal: string
+          tax_paid: string
+          order_total: string
+      raw_stores:
+        +column_types:
+          id: string
+          name: string
+          opened_at: string
+          tax_rate: string
+      raw_supplies:
+        +column_types:
+          id: string
+          name: string
+          cost: string
+          perishable: string
+          sku: string
+      raw_products:
+        +column_types:
+          sku: string
+          name: string
+          type: string
+          price: string
+          description: string
+      raw_items:
+        +column_types:
+          id: string
+          order_id: string
+          sku: string
 
 models:
   jaffle_shop:
@@ -36,4 +70,6 @@ models:
 
 unit_tests:
   jaffle_shop:
-    +enabled: true
+    # Disabled: dbt-clickzetta 1.7.0 bug — unit test cleanup uses DROP TABLE on VIEW relations
+    # Tracked: https://github.com/clickzetta/dbt-clickzetta/issues/5
+    +enabled: false
